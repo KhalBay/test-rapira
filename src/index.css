@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+    --color-black: #000000;
+    --color-white: #fff;
+    --color-primary: #3E97FF;
+    --color-lightWhite: #F9F9F9;
+    --color-nav: rgba(255, 255, 255, 0.1);
+    --color-dark: #181C32FF;
+    --color-lightGray: #D8D8E5;
+    --color-gray: #A1A5B7;
+    --color-lightPrimary: #EEF6FF;
+    --color-hoverPrimary: #3E97FF33;
+    --color-textPrimary: #2884EF;
+    --color-hoverDarkPrimary: #3E97FF;
+    --color-milky: #F1F1F2;
+    --color-textGray: #7E8299;
+    --color-modal: rgba(126, 130, 153, 0.5);
+    --color-textDark: #3F4254;
+    --color-error: #F1416C;
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: url('/fonts/Gilroy-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gilroy';
+    src: url('/fonts/Gilroy-ExtraBold.otf') format('opentype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 300;
+    background-color: var(--color-milky);
+}
