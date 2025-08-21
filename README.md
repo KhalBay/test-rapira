@@ -1,18 +1,38 @@
-# test-cript
+# [Демо](https://khalbay.github.io/test-rapira/) моего тестового.
 
-This template should help get you started developing with Vue 3 in Vite.
+#### О тестовом:
 
-## Recommended IDE Setup
+Ключевое для масштабирования:
+- Разработал систему подключения к апи (сейчас фейковый промис с таймаутом 
+и захардкоженными данными).
+- Разбитие на мелкие компоненты + подготовка своих UI (ну это база, без этого как бы никуда).
+- Добавление стора (в целом можно вообще спокойно было без него обойтись, но с дальнейшим 
+ростом лучше сразу заложить эти вещи)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Для чего тесты:
 
-## Type Support for `.vue` Imports in TS
+``
+ src/__tests__/App.spec.ts
+``
+- Монтирует App.vue со стабами HeaderItem и RouterView и просто проверяет, что компонент смонтировался (какой-то стандартный взял).
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+``
+src/__tests__/ButtonItem.spec.ts
+``
+- Тест 1: рендерит кнопку по умолчанию (залитая), проверяет текст слота и, что есть классы bg-primary и text-white.
+- Тест 2: с пропсом outline проверяет классы bg-lightPrimary и text-primary, затем переключает disabled и проверяет, 
+что появились классы pointer-events-none, bg-lightWhite, text-textGray.
 
-## Customize configuration
+``src/__tests__/InputSearch.spec.ts``
+- Тест 1: с maxLength=5 вводит “123456”, проверяет, что показан счётчик “из 5 символов”, у счётчика класс text-error, а у input — border-error.
+- Тест 2: вводит значение, кликает по кнопке очистки и проверяет, что поле ввода стало пустым.
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+``src/__tests__/BlogItem.spec.ts``
+- Проверяет окончание “комментарий/комментария/комментариев” для 1, 2, 4, 5, 11, 21 комментариев. Сторонние UI-компоненты (chips-ui, comment-ui, button-ui, input-ui) застаблены, чтобы не мешать проверке.
+
+#### Как по мне здесь не было супер сложных компонентов для покрытия, поэтому если кажется что тесты поулчись бесполезными то я пытался придумать интересные кейсы.
+ 
+З.Ы. Первый раз работал с тайвлингом и что-то вью превратился с ним в реакт, кажется что это немного тормозит разработку, но когда сел делать мобильный адаптив очень обрадовался как все быстро и поменял свое мнение :)
 
 ## Project Setup
 
