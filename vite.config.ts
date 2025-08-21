@@ -14,7 +14,11 @@ export default defineConfig(({ command }) => {
       outDir: 'docs',
       emptyOutDir: true
     },
-    plugins: [vue(), vueDevTools(), tailwindcss()],
+    plugins: [
+      vue(),
+      !isBuild && vueDevTools(),
+      tailwindcss(),
+    ].filter(Boolean),
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
