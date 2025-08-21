@@ -7,6 +7,8 @@ const props = defineProps<{
   full?: boolean
 }>()
 
+const baseUrl = import.meta.env.BASE_URL
+
 const commentText = ref<string>('')
 
 const commentEnding = computed((): string => {
@@ -46,7 +48,7 @@ const commentAdd = () => {
   const formatted = `${day}.${month}.${year} в ${hours}:${minutes}`
 
   props.post.comments.push(
-      {id: Date.now(), text: commentText.value, img: '/assets/comm.png', createdAt: formatted, author: 'Егор Игоревич'}
+      {id: Date.now(), text: commentText.value, img: `${baseUrl}assets/comm.png`, createdAt: formatted, author: 'Егор Игоревич'}
   )
   commentDelete()
 }
@@ -69,14 +71,14 @@ const commentAdd = () => {
         :class="full ? 'order-2' : 'order-2'"
     >
       <p>{{ post.createdAt }}</p>
-      <img src="/assets/point.svg" alt="">
+      <img :src="`${baseUrl}assets/point.svg`" alt="">
       <p class="flex gap-[4px]">
-        <img src="/assets/time.svg">
+        <img :src="`${baseUrl}assets/time.svg`">
         {{ post.readingTime + ' мин'}}
       </p>
-      <img src="/assets/point.svg" alt="">
+      <img :src="`${baseUrl}assets/point.svg`" alt="">
       <p class="flex gap-[4px]">
-        <img src="/assets/comment.svg">
+        <img :src="`${baseUrl}assets/comment.svg`">
         {{ post.comments.length  + ' комментар' + commentEnding}}
       </p>
     </div>

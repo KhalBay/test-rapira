@@ -7,6 +7,7 @@ const props = defineProps<{
   maxLength?: number
 }>()
 
+const baseUrl = import.meta.env.BASE_URL
 const value = defineModel()
 
 const currentLength = computed(():number => {
@@ -53,7 +54,7 @@ const clearInput = () => {
         class="absolute right-[10px] top-[13px] cursor-pointer"
         @click="clearInput"
     >
-      <img src="/assets/close.svg" alt="">
+      <img :src="`${baseUrl}assets/close.svg`" alt="">
     </button>
 
     <div

@@ -10,6 +10,8 @@ const emit = defineEmits<{
   (e: 'close'): void
 }>()
 
+const baseUrl = import.meta.env.BASE_URL
+
 const closeModal = () => {
   emit('close')
 }
@@ -47,7 +49,7 @@ const handleKeydown = (event: KeyboardEvent) => {
             class="absolute top-[15px] right-[17px] text-gray-400 hover:text-gray-600 transition-colors z-10"
             @click="closeModal"
         >
-          <img class="size-[20px]" src="/assets/close.svg" alt="Закрыть">
+          <img class="size-[20px]" :src="`${baseUrl}assets/close.svg`" alt="Закрыть">
         </button>
 
         <div v-if="post" class="p-[15px]">

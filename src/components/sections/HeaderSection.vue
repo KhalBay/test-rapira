@@ -3,6 +3,7 @@ import { ref, watchEffect } from "vue"
 import { useRoute } from "vue-router"
 import type { NavigationT } from "@/models/interfaces"
 
+const baseUrl = import.meta.env.BASE_URL
 const route = useRoute()
 const isMenuOpen = ref(false)
 
@@ -29,11 +30,11 @@ watchEffect(toggleActiveTab)
           class="xl:hidden text-white text-2xl mr-[20px] cursor-pointer"
           @click="isMenuOpen = true"
       >
-          <img src="/assets/burger.svg" alt="burger">
+          <img :src="`${baseUrl}assets/burger.svg`" alt="burger">
       </button>
 
       <router-link to="/">
-        <img src="/assets/logo.svg" alt="Logo" class="h-[32px]" />
+        <img :src="`${baseUrl}assets/logo.svg`" alt="Logo" class="h-[32px]" />
       </router-link>
 
       <nav class="hidden xl:flex gap-[20px]">
@@ -56,7 +57,7 @@ watchEffect(toggleActiveTab)
             class="self-end text-white text-2xl cursor-pointer"
             @click="isMenuOpen = false"
         >
-          <img class="size-[40px]" src="/assets/close.svg" alt="">
+          <img class="size-[40px]" :src="`${baseUrl}assets/close.svg`" alt="">
         </button>
 
         <nav class="flex flex-col gap-4 mt-4">
