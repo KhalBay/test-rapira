@@ -9,10 +9,14 @@ const props = defineProps<{
 
 const value = defineModel()
 
-const currentLength = computed(() => value.value?.length || 0)
+const currentLength = computed(():number => {
+  const val = value.value
+  return typeof val === 'string' ? val.length : String(val).length
+})
 
-const isOverLimit = computed(() => {
-  return currentLength.value ? currentLength.value > props.maxLength : false
+const isOverLimit = computed(():boolean => {
+  if (!props.maxLength) return false
+  return currentLength.value > props.maxLength
 })
 
 const clearInput = () => {
